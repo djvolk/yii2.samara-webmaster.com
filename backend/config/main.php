@@ -13,6 +13,24 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            //'suffix' => '.html',
+            'rules' => [
+                '' => 'site/index',
+                
+                
+                '<action>'=>'site/<action>',
+            ],
+        ], 
+         'assetManager' => [
+             'basePath' => '@webroot/assets',
+             'baseUrl' => '@web/assets'
+        ],  
+        'request' => [
+            'baseUrl' => '/admin'
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -28,6 +46,12 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+    ],
+    'modules' => [
+        'permit' => [
+            'class' => 'developeruz\db_rbac\Yii2DbRbac',
+            'layout' => '//admin'
         ],
     ],
     'params' => $params,

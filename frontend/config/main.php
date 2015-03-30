@@ -11,7 +11,23 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
-    'components' => [
+    'components' => [      
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            //'suffix' => '.html',
+            'rules' => [
+                '' => 'site/index',
+                '<action>'=>'site/<action>',
+            ],
+        ], 
+         'assetManager' => [
+             'basePath' => '@webroot/assets',
+             'baseUrl' => '@web/assets'
+        ],  
+        'request' => [
+            'baseUrl' => ''
+        ],      
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
