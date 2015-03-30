@@ -6,6 +6,8 @@ $params = array_merge(
     require(__DIR__ . '/params-local.php')
 );
 
+use developeruz\db_rbac\behaviors\AccessBehavior;
+
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
@@ -51,8 +53,11 @@ return [
     'modules' => [
         'permit' => [
             'class' => 'developeruz\db_rbac\Yii2DbRbac',
-            'layout' => '//admin'
+            //'layout' => '//admin'
         ],
+    ],
+    'as AccessBehavior' => [
+        'class' => AccessBehavior::className(),
     ],
     'params' => $params,
 ];
